@@ -200,6 +200,8 @@ switch ($action) {
                         <td><?php echo $recurso->estado; ?></td>
                         <td><?php echo $recurso->fechaAdquisicion; ?></td>
                         <td><?php echo $recurso->tipo; ?></td>
+                        <td><?php echo $recurso->prestable; ?></td>
+
                         <td>
                             <a href='index.php?action=edit&id=<?php echo $recurso->id; ?>' class='btn btn-sm btn-warning'><i class='fas fa-edit'></i></a>
                             <a href='index.php?action=delete&id=<?php echo $recurso->id; ?>' class='btn btn-sm btn-danger' onclick="return confirm('¿Está seguro de que desea eliminar este recurso?');"><i class='fas fa-trash'></i></a>
