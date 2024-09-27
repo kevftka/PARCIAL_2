@@ -10,16 +10,9 @@ class RecursoBiblioteca {
     public $fechaAdquisicion;
     public $tipo;
 
-    public function getTitulo() {
-        return $this->titulo;
-    }
-
-    public function getAutor() {
-        return $this->autor;
-    }
-    public function __construct($datos, $titulo, $autor) {
-        $this->titulo = $titulo;
-        $this->autor = $autor;
+ 
+    public function __construct($datos) {
+      
 
         foreach ($datos as $key => $value) {
             if (property_exists($this, $key)) {
@@ -29,13 +22,10 @@ class RecursoBiblioteca {
         
     }
 
-
-
-  
-
-
    
 }
+
+
 
 // Implementar las clases Libro, Revista y DVD aquí
 
@@ -52,6 +42,67 @@ class GestorBiblioteca {
         }
         
         return $this->recursos;
+    }
+
+    public function obtenerDetallesPrestamo() {
+        return "Detalles del recurso.";
+    }
+}
+
+// Clase Libro que hereda de RecursoBiblioteca
+class Libro extends RecursoBiblioteca {
+    private $isbn;
+
+    public function __construct($titulo, $autor, $isbn) {
+        parent::__construct($titulo, $autor);
+        $this->isbn = $isbn;
+    }
+
+    public function getIsbn() {
+        return $this->isbn;
+    }
+
+    // Implementación del método obtenerDetallesPrestamo
+    public function obtenerDetallesPrestamo() {
+        return "Libro: " . $this->titulo . " | Autor: " . $this->autor . " | ISBN: " . $this->isbn;
+    }
+}
+
+// Clase Revista que hereda de RecursoBiblioteca
+class Revista extends RecursoBiblioteca {
+    private $numeroEdicion;
+
+    public function __construct($titulo, $autor, $numeroEdicion) {
+        parent::__construct($titulo, $autor);
+        $this->numeroEdicion = $numeroEdicion;
+    }
+
+    public function getNumeroEdicion() {
+        return $this->numeroEdicion;
+    }
+
+    // Implementación del método obtenerDetallesPrestamo
+    public function obtenerDetallesPrestamo() {
+        return "Revista: " . $this->titulo . " | Autor: " . $this->autor . " | Número de Edición: " . $this->numeroEdicion;
+    }
+}
+
+// Clase DVD que hereda de RecursoBiblioteca
+class DVD extends RecursoBiblioteca {
+    private $duracion; // duración en minutos
+
+    public function __construct($titulo, $autor, $duracion) {
+        parent::__construct($titulo, $autor);
+        $this->duracion = $duracion;
+    }
+
+    public function getDuracion() {
+        return $this->duracion;
+    }
+
+    // Implementación del método obtenerDetallesPrestamo
+    public function obtenerDetallesPrestamo() {
+        return "DVD: " . $this->titulo . " | Director: " . $this->autor . " | Duración: " . $this->duracion . " minutos";
     }
 
     // Implementar los demás métodos aquí
