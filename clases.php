@@ -1,5 +1,7 @@
 <?php
 class RecursoBiblioteca {
+
+    public $prestable;
     public $id;
     public $titulo;
     public $autor;
@@ -8,13 +10,31 @@ class RecursoBiblioteca {
     public $fechaAdquisicion;
     public $tipo;
 
-    public function __construct($datos) {
+    public function getTitulo() {
+        return $this->titulo;
+    }
+
+    public function getAutor() {
+        return $this->autor;
+    }
+    public function __construct($datos, $titulo, $autor) {
+        $this->titulo = $titulo;
+        $this->autor = $autor;
+
         foreach ($datos as $key => $value) {
             if (property_exists($this, $key)) {
                 $this->$key = $value;
             }
         }
+        
     }
+
+
+
+  
+
+
+   
 }
 
 // Implementar las clases Libro, Revista y DVD aquí
