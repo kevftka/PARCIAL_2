@@ -14,10 +14,7 @@ $sortDirection = isset($_GET['direction']) ? $_GET['direction'] : 'ASC';
 $filterEstado = isset($_GET['filterEstado']) ? $_GET['filterEstado'] : '';
 
 //interface prestable
-interface prestable
-{
-    public function obtenerDetallesPrestamo($string);
-}
+
 
 $gestorBiblioteca = new GestorBiblioteca();
 $recursos = $gestorBiblioteca->cargarRecursos();
@@ -263,3 +260,4 @@ switch ($action) {
     </script>
 </body>
 </html>
+
