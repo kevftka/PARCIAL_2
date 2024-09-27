@@ -45,8 +45,29 @@ class GestorBiblioteca {
     }
 
     public function obtenerDetallesPrestamo() {
-        return $this->obtenerDetallesPrestamo();
+        return "Detalles del recurso.";
     }
+
+    /* Implementen los siguientes métodos en la clase GestorBiblioteca:
+• agregarRecurso(RecursoBiblioteca $recurso)
+• eliminarRecurso($id)
+• actualizarRecurso(RecursoBiblioteca $recurso)
+• actualizarEstadoRecurso($id, $nuevoEstado)
+• buscarRecursosPorEstado($estado)
+• listarRecursos($filtroEstado = '', $campoOrden = 'id', $direccionOrden = 
+'ASC') */
+public function agregarRecurso(RecursoBiblioteca $recurso) {
+    $this->recursos[] = $recurso;
+
+}
+public function eliminarRecurso($id){
+    unset($this->recurso[$id]);
+}
+
+public function actualizarRecurso(RecursoBiblioteca $recurso){
+    
+}
+
 }
 
 // Clase Libro que hereda de RecursoBiblioteca
