@@ -45,7 +45,7 @@ class GestorBiblioteca {
     }
 
     public function obtenerDetallesPrestamo() {
-        return "Detalles del recurso.";
+        return $this->obtenerDetallesPrestamo();
     }
 }
 
