@@ -1,109 +1,41 @@
 <?php
-class RecursoBiblioteca {
-
-    public $prestable;
+class Entrada {
     public $id;
-    public $titulo;
-    public $autor;
-    public $anioPublicacion;
-    public $estado;
-    public $fechaAdquisicion;
+    public $fecha_creacion;
     public $tipo;
+    public $titulo;
+    public $descripcion;
 
- 
-    public function __construct($datos) {
-      
-
+    public function __construct($datos = []) {
         foreach ($datos as $key => $value) {
             if (property_exists($this, $key)) {
                 $this->$key = $value;
             }
         }
-        
     }
-
-   
 }
 
+class GestorBlog {
+    private $entradas = [];
 
-
-// Implementar las clases Libro, Revista y DVD aquí
-
-class GestorBiblioteca {
-    private $recursos = [];
-
-    public function cargarRecursos() {
-        $json = file_get_contents('biblioteca.json');
-        $data = json_decode($json, true);
-        
-        foreach ($data as $recursoData) {
-            $recurso = new RecursoBiblioteca($recursoData);
-            $this->recursos[] = $recurso;
+    public function cargarEntradas() {
+        if (file_exists('blog.json')) {
+            $json = file_get_contents('blog.json');
+            $data = json_decode($json, true);
+            foreach ($data as $entradaData) {
+                $this->entradas[] = new Entrada($entradaData);
+            }
         }
-        
-        return $this->recursos;
     }
 
-    public function obtenerDetallesPrestamo() {
-        return $this->obtenerDetallesPrestamo();
-    }
-}
-
-// Clase Libro que hereda de RecursoBiblioteca
-class Libro extends RecursoBiblioteca {
-    private $isbn;
-
-    public function __construct($titulo, $autor, $isbn) {
-        parent::__construct($titulo, $autor);
-        $this->isbn = $isbn;
+    public function guardarEntradas() {
+        $data = array_map(function($entrada) {
+            return get_object_vars($entrada);
+        }, $this->entradas);
+        file_put_contents('blog.json', json_encode($data, JSON_PRETTY_PRINT));
     }
 
-    public function getIsbn() {
-        return $this->isbn;
+    public function obtenerEntradas() {
+        return $this->entradas;
     }
-
-    // Implementación del método obtenerDetallesPrestamo
-    public function obtenerDetallesPrestamo() {
-        return "Libro: " . $this->titulo . " | Autor: " . $this->autor . " | ISBN: " . $this->isbn;
-    }
-}
-
-// Clase Revista que hereda de RecursoBiblioteca
-class Revista extends RecursoBiblioteca {
-    private $numeroEdicion;
-
-    public function __construct($titulo, $autor, $numeroEdicion) {
-        parent::__construct($titulo, $autor);
-        $this->numeroEdicion = $numeroEdicion;
-    }
-
-    public function getNumeroEdicion() {
-        return $this->numeroEdicion;
-    }
-
-    // Implementación del método obtenerDetallesPrestamo
-    public function obtenerDetallesPrestamo() {
-        return "Revista: " . $this->titulo . " | Autor: " . $this->autor . " | Número de Edición: " . $this->numeroEdicion;
-    }
-}
-
-// Clase DVD que hereda de RecursoBiblioteca
-class DVD extends RecursoBiblioteca {
-    private $duracion; // duración en minutos
-
-    public function __construct($titulo, $autor, $duracion) {
-        parent::__construct($titulo, $autor);
-        $this->duracion = $duracion;
-    }
-
-    public function getDuracion() {
-        return $this->duracion;
-    }
-
-    // Implementación del método obtenerDetallesPrestamo
-    public function obtenerDetallesPrestamo() {
-        return "DVD: " . $this->titulo . " | Director: " . $this->autor . " | Duración: " . $this->duracion . " minutos";
-    }
-
-    // Implementar los demás métodos aquí
-}
+}   
