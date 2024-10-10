@@ -26,7 +26,6 @@ class GestorBlog {
                 $this->entradas[] = new Entrada($entradaData);
             }
         }
-
     }
 
     public function guardarEntradas() {
