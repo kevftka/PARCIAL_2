@@ -1,10 +1,11 @@
+
 <?php
-interface Detalle {
-    public function obtenerDetallesEspecificos(): string;
+interface  Detalle{
+    public function obtenerDetallesEspecificos():string;
 }
 
-//Clase abstracta Entrada que implementa la interfaz Detalle
-abstract class Entrada  extends obtenerDetallesEspecificos{
+abstract class Entrada implements  Detalle {
+
     public $id;
     public $fecha_creacion;
     public $tipo;
@@ -18,17 +19,61 @@ abstract class Entrada  extends obtenerDetallesEspecificos{
             }
         }
     }
-    
 }
- 
-//Clase de dos columna  que herede de  Entrada
-class EntradaDosColumna extends Entrada {
-    public function obtenerDetallesEspecificos(){
-        titulo
+
+class EntradaUnaColumna extends Entrada {
+
+    public function __construct($datos = []) {
+        parent::__construct($datos);
+        $this->titulo='titulo';
+        $this->descripcion='descripcion';
+    }
+
+    public function obtenerDetallesEspecificos():string {
+        return "Entrada de una columna: " . $this->titulo;
+    }
+
+}
+
+class EntradaDosColumnas extends Entrada {
+    public $titulo1;
+    public $descripcion1;
+    public $titulo2;
+    public $descripcion2;
+    public function __construct($datos = []) {
+        $this->titulo1='titulo1';
+        $this->descripcion1='descripcion1';
+        $this->titulo2='titulo2';
+        $this->descripcion2='descripcion2';
+        parent::__construct($datos);
+    }
+    
+    public function obtenerDetallesEspecificos():  string {
+        return "Entrada de dos columnas: " . $this->titulo1 . " | " . $this->titulo2;
     }
 }
 
+class EntradaTresColumnas extends Entrada {
+    public $titulo1;
+    public $descripcion1;
+    public $titulo2;
+    public $descripcion2;
+    public $titulo3;
+    public $descripcion3;
+    public function __construct($datos = []) {
+        $this->titulo1='titulo1';
+        $this->descripcion1='descripcion1';
+        $this->titulo2='titulo2';
+        $this->descripcion2='descripcion2';
+        $this->titulo3='titulo3';
+        $this->descripcion3='descripcion3';
+        parent::__construct($datos);
+    }
 
+    public function obtenerDetallesEspecificos(): string {
+        return "Entrada de tres columnas: " . $this->titulo1 . " | " . $this->titulo2 . " | " . $this->titulo3;
+    }
+}
 
 class GestorBlog {
     private $entradas = [];
@@ -54,4 +99,5 @@ class GestorBlog {
     public function obtenerEntradas() {
         return $this->entradas;
     }
+    
 }   
