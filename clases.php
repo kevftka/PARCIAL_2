@@ -25,14 +25,14 @@ abstract class Entrada  extends Detalle{
 //class entrdaa 1 columna
 class EntradaUnaColumna extends Entrada {
     public function obtenerDetallesEspecificos(){
-        titulo 
+        $titulo 
     }
 }
 
 //Clase de dos columna  que herede de  Entrada
 class EntradaDosColumna extends Entrada {
     public function obtenerDetallesEspecificos(){
-        titulo
+        $titulo
     }
 }
 
@@ -49,8 +49,38 @@ class GestorBlog {
                 $this->entradas[] = new Entrada($entradaData);
             }
         }
-
     }
+    
+    //Metodo editar entrdaa
+    public function editarEntrada() {
+        if (file_exists('blog.json')) {
+            $json = file_get_contents('blog.json');
+            $data = json_decode($json, true);
+            foreach ($data as $entradaData) {
+                $this->entradas[] = new Entrada($entradaData);
+            }
+        }
+    }
+
+    //metodo agregar entrada
+    public function agregarEntrada() {
+        $data = array_map(function($entrada) {
+            return get_object_vars($entrada);
+        }, $this->entradas);
+        file_put_contents('blog.json', json_encode($data, JSON_PRETTY_PRINT));
+    }
+
+    
+    public function eliminarEntrada($id) {
+        if (file_exists('blog.json')) {
+            $json = file_get_contents('blog.json');
+            $data = json_decode($json, true);
+            foreach ($data as $entradaData) {
+                $this->entradas[] = new Entrada($entradaData);
+            }
+        }
+    }
+
 
     public function guardarEntradas() {
         $data = array_map(function($entrada) {
