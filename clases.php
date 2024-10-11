@@ -3,7 +3,7 @@ interface  Detalle{
     public function obtenerDetallesEspecificos():string;
 }
 
-abstract class Entrada extends  Detalle {
+abstract class Entrada implements  Detalle {
 
     public $id;
     public $fecha_creacion;
@@ -28,27 +28,49 @@ class EntradaUnaColumna extends Entrada {
         $this->descripcion='descripcion';
     }
 
+    public function obtenerDetallesEspecificos():string {
+        return "Entrada de una columna: " . $this->titulo;
+    }
+
 }
 
 class EntradaDosColumnas extends Entrada {
+    public $titulo1;
+    public $descripcion1;
+    public $titulo2;
+    public $descripcion2;
     public function __construct($datos = []) {
-        $titulo1='titulo1';
-        $descripcion1='descripcion1';
-        $titulo2='titulo2';
-        $descripcion2='descripcion2';
+        $this->titulo1='titulo1';
+        $this->descripcion1='descripcion1';
+        $this->titulo2='titulo2';
+        $this->descripcion2='descripcion2';
         parent::__construct($datos);
+    }
+    
+    public function obtenerDetallesEspecificos():  string {
+        return "Entrada de dos columnas: " . $this->titulo1 . " | " . $this->titulo2;
     }
 }
 
 class EntradaTresColumnas extends Entrada {
+    public $titulo1;
+    public $descripcion1;
+    public $titulo2;
+    public $descripcion2;
+    public $titulo3;
+    public $descripcion3;
     public function __construct($datos = []) {
-        $titulo1='titulo1';
-        $descripcion1='descripcion1';
-        $titulo2='titulo2';
-        $descripcion2='descripcion2';
-        $titulo3='titulo3';
-        $descripcion3='descripcion3';
+        $this->titulo1='titulo1';
+        $this->descripcion1='descripcion1';
+        $this->titulo2='titulo2';
+        $this->descripcion2='descripcion2';
+        $this->titulo3='titulo3';
+        $this->descripcion3='descripcion3';
         parent::__construct($datos);
+    }
+
+    public function obtenerDetallesEspecificos(): string {
+        return "Entrada de tres columnas: " . $this->titulo1 . " | " . $this->titulo2 . " | " . $this->titulo3;
     }
 }
 
@@ -76,4 +98,5 @@ class GestorBlog {
     public function obtenerEntradas() {
         return $this->entradas;
     }
+    
 }   

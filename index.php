@@ -97,21 +97,21 @@ $entradas = $gestorBlog->obtenerEntradas();
     <?php
     $entradaEditar = null;
     if ($action === 'edit' && isset($_GET['id'])) {
-        $entradaEditar = $gestorBlog->obtenerEntrada($_GET['id']);
+        $entradaEditar = $gestorBlog->obtenerEntradas($_GET['id']);
     }
     ?>
     <form action="index.php" method="post">
         <input type="hidden" name="action" value="<?php echo $action; ?>">
         <?php if ($entradaEditar): ?>
-            <input type="hidden" name="id" value="<?php echo $entradaEditar->id; ?>">
+            <input type="hidden" name="id" value="<?php echo $entradasEditar->id; ?>">
         <?php endif; ?>
         
         <div class="mb-3">
             <label for="tipo" class="form-label">Tipo de Entrada</label>
             <select class="form-select" id="tipo" name="tipo" required>
-                <option value="1" <?php echo $entradaEditar && $entradaEditar->tipo == 1 ? 'selected' : ''; ?>>1 Columna</option>
-                <option value="2" <?php echo $entradaEditar && $entradaEditar->tipo == 2 ? 'selected' : ''; ?>>2 Columnas</option>
-                <option value="3" <?php echo $entradaEditar && $entradaEditar->tipo == 3 ? 'selected' : ''; ?>>3 Columnas</option>
+                <option value="1" <?php echo $entradaEditar && $entradasEditar->tipo == 1 ? 'selected' : ''; ?>>1 Columna</option>
+                <option value="2" <?php echo $entradaEditar && $entradasEditar->tipo == 2 ? 'selected' : ''; ?>>2 Columnas</option>
+                <option value="3" <?php echo $entradaEditar && $entradasEditar->tipo == 3 ? 'selected' : ''; ?>>3 Columnas</option>
             </select>
         </div>
 
