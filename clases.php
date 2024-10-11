@@ -4,7 +4,7 @@ interface Detalle {
 }
 
 //Clase abstracta Entrada que implementa la interfaz Detalle
-abstract class Entrada  extends obtenerDetallesEspecificos{
+abstract class Entrada  extends Detalle{
     public $id;
     public $fecha_creacion;
     public $tipo;
@@ -20,7 +20,15 @@ abstract class Entrada  extends obtenerDetallesEspecificos{
     }
     
 }
- 
+
+
+//class entrdaa 1 columna
+class EntradaUnaColumna extends Entrada {
+    public function obtenerDetallesEspecificos(){
+        titulo 
+    }
+}
+
 //Clase de dos columna  que herede de  Entrada
 class EntradaDosColumna extends Entrada {
     public function obtenerDetallesEspecificos(){
