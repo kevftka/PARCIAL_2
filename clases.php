@@ -1,9 +1,10 @@
 <?php
-interface obtenerDetallesEspecificos{
+interface  Detalle{
     public function obtenerDetallesEspecificos():string;
 }
 
-class Entrada {
+abstract class Entrada extends  Detalle {
+
     public $id;
     public $fecha_creacion;
     public $tipo;
@@ -16,6 +17,38 @@ class Entrada {
                 $this->$key = $value;
             }
         }
+    }
+}
+
+class EntradaUnaColumna extends Entrada {
+
+    public function __construct($datos = []) {
+        parent::__construct($datos);
+        $this->titulo='titulo';
+        $this->descripcion='descripcion';
+    }
+
+}
+
+class EntradaDosColumnas extends Entrada {
+    public function __construct($datos = []) {
+        $titulo1='titulo1';
+        $descripcion1='descripcion1';
+        $titulo2='titulo2';
+        $descripcion2='descripcion2';
+        parent::__construct($datos);
+    }
+}
+
+class EntradaTresColumnas extends Entrada {
+    public function __construct($datos = []) {
+        $titulo1='titulo1';
+        $descripcion1='descripcion1';
+        $titulo2='titulo2';
+        $descripcion2='descripcion2';
+        $titulo3='titulo3';
+        $descripcion3='descripcion3';
+        parent::__construct($datos);
     }
 }
 
