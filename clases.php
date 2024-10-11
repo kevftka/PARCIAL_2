@@ -1,5 +1,10 @@
 <?php
-class Entrada {
+interface Detalle {
+    public function obtenerDetallesEspecificos(): string;
+}
+
+//Clase abstracta Entrada que implementa la interfaz Detalle
+abstract class Entrada  extends obtenerDetallesEspecificos{
     public $id;
     public $fecha_creacion;
     public $tipo;
@@ -13,7 +18,17 @@ class Entrada {
             }
         }
     }
+    
 }
+ 
+//Clase de dos columna  que herede de  Entrada
+class EntradaDosColumna extends Entrada {
+    public function obtenerDetallesEspecificos(){
+        titulo
+    }
+}
+
+
 
 class GestorBlog {
     private $entradas = [];
