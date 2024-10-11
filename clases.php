@@ -83,7 +83,7 @@ class GestorBlog {
             $json = file_get_contents('blog.json');
             $data = json_decode($json, true);
             foreach ($data as $entradaData) {
-                $this->entradas[] = new Entrada($entradaData);
+                $this->entradas[] = new EntradaDosColumnas($entradaData);
             }
         }
 

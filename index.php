@@ -98,7 +98,7 @@ $entradas = $gestorBlog->obtenerEntradas();
     <?php
     $entradaEditar = null;
     if ($action === 'edit' && isset($_GET['id'])) {
-        $entradaEditar = $gestorBlog->obtenerEntradas($_GET['id']);
+        // $entradaEditar = $gestorBlog->obtenerEntrada($_GET['id']);
     }
     ?>
     <form action="index.php" method="post">
@@ -183,7 +183,7 @@ $entradas = $gestorBlog->obtenerEntradas();
                                         <img src="https://picsum.photos/400/300?random=<?php echo $entrada->id; ?>-1" class="card-img-top" alt="Imagen aleatoria">
                                         <div class="card-body">
                                             <h5 class="card-title"><?php echo $entrada->titulo1; ?></h5>
-                                            <p class="card-text"><?php echo $entrada->descripcion1; ?></p>
+                                            <p class="card-text"><?php echo $entrada-> nmnmnbdescripcion1; ?></p>
                                         </div>
                                     </div>
                                 </div>
