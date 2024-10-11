@@ -1,4 +1,8 @@
 <?php
+interface obtenerDetallesEspecificos{
+    public function obtenerDetallesEspecificos():string;
+}
+
 class Entrada {
     public $id;
     public $fecha_creacion;
